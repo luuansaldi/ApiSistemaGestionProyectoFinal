@@ -15,6 +15,12 @@ namespace SistemaGestionProyectoFinal.Controllers
             VentaHandler.CargarVentas(productos, idUser);
         }
 
+        [HttpGet("{idUsuario}")]
+        public void TraerVentas(long idUsuario)
+        {
+            VentaHandler.ObtenerVentasRealizadas(idUsuario);
+        }
+
         
     }
 }
