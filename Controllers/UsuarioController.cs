@@ -12,7 +12,7 @@ namespace SistemaGestionProyectoFinal.Controllers
         [HttpGet("{usuario}/{passw}")]
         public Usuario Login(string usuario, string passw)
         {
-           return UsuarioHandler.Login(usuario, passw);
+            return UsuarioHandler.Login(usuario, passw);
         }
 
         [HttpPost]
@@ -26,5 +26,12 @@ namespace SistemaGestionProyectoFinal.Controllers
         {
             UsuarioHandler.UpdateUser(user);
         }
+
+        [HttpGet("{usuario}")]
+        public void traerUsuario(string usuario)
+        {
+            UsuarioHandler.TraerUsuario(usuario);
+        }
+
     }
 }
