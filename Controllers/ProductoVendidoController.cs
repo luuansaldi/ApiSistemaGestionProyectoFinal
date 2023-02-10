@@ -10,9 +10,9 @@ namespace SistemaGestionProyectoFinal.Controllers
     public class ProductoVendidoController : ControllerBase
     {
         [HttpGet("{idUsuario}")]
-        public void TraerProductosVendidos(long idUsuario)
+        public List<Producto> TraerProductosVendidos(long idUsuario)
         {
-            ProductoVendidoHandler.ObtenerProductosVendidos(idUsuario);
+            return ProductoVendidoHandler.ObtenerProductosVendidos(idUsuario);
         }
     }
 }

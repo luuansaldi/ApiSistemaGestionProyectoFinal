@@ -16,9 +16,10 @@ namespace SistemaGestionProyectoFinal.Controllers
         }
 
         [HttpGet("{idUsuario}")]
-        public void TraerVentas(long idUsuario)
+        public List<Venta> TraerVentas(long idUsuario)
         {
-            VentaHandler.ObtenerVentasRealizadas(idUsuario);
+            return VentaHandler.ObtenerVentasRealizadas(idUsuario);
+            
         }
 
         

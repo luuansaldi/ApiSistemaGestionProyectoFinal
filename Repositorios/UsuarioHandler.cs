@@ -9,7 +9,7 @@ namespace SistemaGestionProyectoFinal.Repositorios
     {
         public static string cadenaConexion = "Data Source=DESKTOP-DKO2V17;Initial Catalog=SistemaGestion;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public static void TraerUsuario(string username)
+        public static Usuario TraerUsuario(string username)
         {
             Usuario usuario = new Usuario();
             using (SqlConnection conn = new SqlConnection(cadenaConexion))
@@ -29,11 +29,7 @@ namespace SistemaGestionProyectoFinal.Repositorios
                     usuario.Email = reader.GetString(5);
                 }
 
-                Console.WriteLine($"Nombre {usuario.Name}");
-                Console.WriteLine($"Apellido {usuario.Lastname}");
-                Console.WriteLine($"Nombre de usuario {usuario.Username}");
-                Console.WriteLine($"Contraseña {usuario.Password}");
-                Console.WriteLine($"Email {usuario.Email}");
+                return usuario;
 
             }
 

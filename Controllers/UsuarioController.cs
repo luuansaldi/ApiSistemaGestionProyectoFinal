@@ -28,9 +28,9 @@ namespace SistemaGestionProyectoFinal.Controllers
         }
 
         [HttpGet("{usuario}")]
-        public void traerUsuario(string usuario)
+        public Usuario traerUsuario(string usuario)
         {
-            UsuarioHandler.TraerUsuario(usuario);
+            return UsuarioHandler.TraerUsuario(usuario);
         }
 
     }
