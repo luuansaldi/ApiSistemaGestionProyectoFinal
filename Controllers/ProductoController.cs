@@ -26,5 +26,12 @@ namespace SistemaGestionProyectoFinal.Controllers
         {
             ProductoHandler.DeleteProducto(id);
         }
+
+        [HttpGet("{id}")]
+        public Producto GetProducto(long id)
+        {
+
+            return ProductoHandler.ObtenerProducto(id);
+        }
     }
 }

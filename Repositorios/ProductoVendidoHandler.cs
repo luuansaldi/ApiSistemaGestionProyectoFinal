@@ -37,15 +37,5 @@ namespace SistemaGestionProyectoFinal.Repositorios
             }
         }
 
-        //public static void InsertarProductoVendido(ProductoVendido productoVendido)
-        //{
-        //    using (SqlConnection conn = new SqlConnection(cadenaConexion))
-        //    {
-                
-        //        SqlCommand command = new SqlCommand($"INSERT INTO ProductoVendido (Stock,IdProducto,IdVenta) VALUES ({productoVendido.Stock},{productoVendido.IdProducto},{idVenta})",conn);
-        //        conn.Open();
-        //        command.ExecuteReader();
-        //    }
-        //}
     }
 }
