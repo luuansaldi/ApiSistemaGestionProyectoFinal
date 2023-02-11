@@ -37,20 +37,32 @@ namespace SistemaGestionProyectoFinal.Repositorios
             }
         }
 
-        public static long InsertarVenta(Venta venta)
+        public static void InsertVenta(List<Producto> productos, long IdUsuario)
         {
+            Venta venta = new Venta();
+
             using (SqlConnection conn = new SqlConnection(cadenaConexion))
             {
-                SqlCommand command = new SqlCommand($"INSERT INTO Venta(Comentarios,IdUsuario) Values('{venta.Comentarios}',{venta.IdUser}) SELECT @@IDENTITY", conn);
-                conn.Open();
-                return Convert.ToInt64(command.ExecuteScalar());
+                SqlCommand command = new SqlCommand($"INSERT INTO Venta(Comentarios,IdUsuario) VALUES ('venta por usuario {IdUsuario}', {IdUsuario})", conn);
+
+                command.ExecuteNonQuery(); 
+                venta.Id = GetId.Get(command);
+                venta.IdUser = IdUsuario;
+
+                foreach (Producto producto in productos)
+                {
+                    SqlCommand command2 = new SqlCommand($"INSERT INTO ProductoVendido(Stoc,IdProducto,IdVenta) VALUES({producto.Stock},{producto.Id},{venta.Id})", conn);
+                    command2.ExecuteNonQuery(); 
+                    command2.Parameters.Clear();
+
+                    SqlCommand command3 = new SqlCommand( $" UPDATE Producto SET Stock = (Stock - {producto.Stock}) WHERE Id = {producto.Id}",conn);
+
+                    command3.ExecuteNonQuery(); 
+                    command3.Parameters.Clear();
+                }
             }
-
         }
-        public static void CargarVentas(List<Producto> productos, long idUsuario)
-        {
 
-        }
     }
 }
 

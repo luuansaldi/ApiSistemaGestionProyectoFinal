@@ -12,7 +12,7 @@ namespace SistemaGestionProyectoFinal.Controllers
         [HttpPost]
         public void CrearVenta(List<Producto> productos, long idUser)
         {
-            VentaHandler.CargarVentas(productos, idUser);
+            VentaHandler.InsertVenta(productos, idUser);
         }
 
         [HttpGet("{idUsuario}")]
